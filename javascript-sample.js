@@ -27,6 +27,9 @@
    var counter = state['saved-state'].counter || 0;
    var command = { action: '', metadata: {} };
    
+   const turnDirections = ['right', 'left'/*, 'about-face'*/];
+   const turnDirection = turnDirections[Math.floor(Math.random() * 2)];
+   
    if (counter === 0)
    {
         command = { action: 'move', metadata: {} };
@@ -39,7 +42,7 @@
    }
    else if (counter === 2)
    {
-        command = { action: 'turn', metadata: {direction: 'left'} };
+        command = { action: 'turn', metadata: {direction: turnDirection} };
         counter++;
    }
    else 
@@ -55,3 +58,5 @@
         }
     };
 });
+
+
