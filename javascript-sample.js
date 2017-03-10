@@ -1,4 +1,4 @@
-((state, timeLeftFn) => {
+/*((state, timeLeftFn) => {
     const turnDirections = ['right', 'left', 'about-face'];
     const turnDirection = turnDirections[Math.floor(Math.random() * 3)];
 
@@ -18,6 +18,41 @@
         command,
         state: {
             hello: 'world'
+        }
+    };
+}); */
+
+((state, timeLeftFn) => {
+
+   var counter = state['saved-state'].counter || 0;
+   var command = { action: '', metadata: {} };
+   
+   if (counter === 0)
+   {
+        command = { action: 'move', metadata: {} };
+        counter++;
+   }
+   else if (counter === 1)
+   {
+        command = { action: 'smoke', metadata: {direction: 'forward'} };
+        counter++;
+   }
+   else if (counter === 2)
+   {
+        command = { action: 'turn', metadata: {direction: 'left'} };
+        counter++;
+   }
+   else 
+    {
+        command = { action: 'shoot', metadata: {} };
+        counter = 0;
+   }
+   
+    return {
+        command,
+        state: {
+            counter: counter,
+            hello: 'world',
         }
     };
 });
