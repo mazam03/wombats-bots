@@ -34,7 +34,7 @@
    }
    else if (counter === 1)
    {
-        command = { action: 'smoke', metadata: {direction: 'forward'} };
+        command = { action: 'smoke', metadata: {} };
         counter++;
    }
    else if (counter === 2)
@@ -52,7 +52,6 @@
         command,
         state: {
             counter: counter,
-            hello: 'world',
         }
     };
 });
